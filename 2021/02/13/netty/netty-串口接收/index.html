@@ -22,21 +22,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"zzzzzzzs.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="学会使用搜索将会为您减少时间。">
+<meta name="description" content="netty串口接收netty串口，在Windows上使用。 目前只有接收数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Search is art">
-<meta property="og:url" content="http://zzzzzzzs.com/2021/02/11/about/index.html">
+<meta property="og:title" content="netty-串口接收">
+<meta property="og:url" content="http://zzzzzzzs.com/2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/index.html">
 <meta property="og:site_name" content="码怪">
-<meta property="og:description" content="学会使用搜索将会为您减少时间。">
+<meta property="og:description" content="netty串口接收netty串口，在Windows上使用。 目前只有接收数据。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-11T01:31:46.985Z">
-<meta property="article:modified_time" content="2021-02-11T02:56:28.393Z">
+<meta property="article:published_time" content="2021-02-13T14:40:02.000Z">
+<meta property="article:modified_time" content="2021-02-13T14:40:56.129Z">
 <meta property="article:author" content="zzzzzzzs">
-<meta property="article:tag" content="search">
+<meta property="article:tag" content="串口">
+<meta property="article:tag" content="netty">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://zzzzzzzs.com/2021/02/11/about/">
+<link rel="canonical" href="http://zzzzzzzs.com/2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/">
 
 
 <script class="page-configurations">
@@ -48,7 +49,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>Search is art | 码怪</title>
+<title>netty-串口接收 | 码怪</title>
   
 
 
@@ -172,7 +173,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -185,6 +186,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#netty%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6"><span class="nav-number">1.</span> <span class="nav-text">netty串口接收</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -260,7 +262,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zzzzzzzs.com/2021/02/11/about/">
+    <link itemprop="mainEntityOfPage" href="http://zzzzzzzs.com/2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -273,7 +275,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Search is art
+          netty-串口接收
         </h1>
 
         <div class="post-meta-container">
@@ -285,7 +287,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-02-11 09:31:46 / 修改时间：10:56:28" itemprop="dateCreated datePublished" datetime="2021-02-11T09:31:46+08:00">2021-02-11</time>
+      <time title="创建时间：2021-02-13 22:40:02 / 修改时间：22:40:56" itemprop="dateCreated datePublished" datetime="2021-02-13T22:40:02+08:00">2021-02-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -293,7 +295,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/search/" itemprop="url" rel="index"><span itemprop="name">search</span></a>
+          <a href="/categories/netty/" itemprop="url" rel="index"><span itemprop="name">netty</span></a>
         </span>
     </span>
 
@@ -314,7 +316,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>学会使用搜索将会为您减少时间。</p>
+        <h1 id="netty串口接收"><a href="#netty串口接收" class="headerlink" title="netty串口接收"></a>netty串口接收</h1><p>netty串口，在Windows上使用。 目前只有接收数据。</p>
+<a id="more"></a>
+
+<p>RxtxClient.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.netty.rxtx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.netty.bootstrap.Bootstrap;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.ChannelFuture;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.ChannelInitializer;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.oio.OioEventLoopGroup;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.rxtx.RxtxChannel;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.rxtx.RxtxChannelConfig;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.rxtx.RxtxDeviceAddress;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RxtxClient</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> OioEventLoopGroup group = <span class="keyword">new</span> OioEventLoopGroup();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RxtxChannel channel;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">buildRxtxClient</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Bootstrap bootstrap = <span class="keyword">new</span> Bootstrap();</span><br><span class="line">        bootstrap.group(group).channelFactory(<span class="keyword">new</span> ChannelFactory&lt;RxtxChannel&gt;() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> RxtxChannel <span class="title">newChannel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> channel;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">                .handler(<span class="keyword">new</span> ChannelInitializer&lt;RxtxChannel&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(RxtxChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                        ch.pipeline().addLast(</span><br><span class="line"><span class="comment">//                                new LineBasedFrameDecoder(32768),</span></span><br><span class="line"><span class="comment">//                                new StringEncoder(),</span></span><br><span class="line"><span class="comment">//                                new StringDecoder(),</span></span><br><span class="line">                                <span class="comment">// 处理事件</span></span><br><span class="line">                                <span class="keyword">new</span> RxtxClientHandler()</span><br><span class="line">                        );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">        channel = <span class="keyword">new</span> RxtxChannel();</span><br><span class="line">        channel.config().setBaudrate(<span class="number">9600</span>)</span><br><span class="line">                .setDatabits(RxtxChannelConfig.Databits.DATABITS_8)</span><br><span class="line">                .setParitybit(RxtxChannelConfig.Paritybit.NONE)</span><br><span class="line">                .setStopbits(RxtxChannelConfig.Stopbits.STOPBITS_1);</span><br><span class="line">        ChannelFuture  future = bootstrap.connect(<span class="keyword">new</span> RxtxDeviceAddress(<span class="string">&quot;COM3&quot;</span>)).sync();</span><br><span class="line">        future.channel().closeFuture().sync();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            buildRxtxClient();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            group.shutdownGracefully();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RxtxClientHandler.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.netty.rxtx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.netty.buffer.ByteBuf;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.ChannelHandlerContext;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.SimpleChannelInboundHandler;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RxtxClientHandler</span> <span class="keyword">extends</span> <span class="title">SimpleChannelInboundHandler</span>&lt;<span class="title">ByteBuf</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">channelRead0</span><span class="params">(ChannelHandlerContext ctx, ByteBuf o)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">byte</span>[] req = <span class="keyword">new</span> <span class="keyword">byte</span>[o.readableBytes()];</span><br><span class="line">        <span class="comment">// 从里面读取数据，这里面的数据是16进制的，0x..</span></span><br><span class="line">        o.readBytes(req);</span><br><span class="line"><span class="comment">//         将hex解码成String</span></span><br><span class="line"><span class="comment">//        System.out.println(new String(req));</span></span><br><span class="line"><span class="comment">//        // 十六进制转换字符串，没有解码</span></span><br><span class="line"><span class="comment">//        String str = HexUtil.encodeHexStr(req);</span></span><br><span class="line"><span class="comment">//        System.out.println(str);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>GitHub: <a target="_blank" rel="noopener" href="https://github.com/zzzzzzzs/netty-rxtx">https://github.com/zzzzzzzs/netty-rxtx</a></p>
 
     </div>
 
@@ -341,18 +354,19 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/search/" rel="tag"># search</a>
+              <a href="/tags/%E4%B8%B2%E5%8F%A3/" rel="tag"># 串口</a>
+              <a href="/tags/netty/" rel="tag"># netty</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2021/02/11/about/" rel="prev" title="Search is art">
+                  <i class="fa fa-chevron-left"></i> Search is art
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/" rel="next" title="netty-串口接收">
-                  netty-串口接收 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -461,7 +475,7 @@ NexT.utils.loadComments('.gitalk-container', () => {
       repo        : 'zzzzzzzs.github.io',
       owner       : 'zzzzzzzs',
       admin       : ['zzzzzzzs'],
-      id          : '850db4780d8f446e83d76484ae6bc6f8',
+      id          : '0a8c9494dfabcf9afb1bcc5e7e512fc8',
         language: 'zh-CN',
       distractionFreeMode: true
     });
