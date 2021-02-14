@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Springboot打包jar中没有主清单属性</title>
+      <link href="2021/02/14/Springboot/Springboot%E6%89%93%E5%8C%85jar%E4%B8%AD%E6%B2%A1%E6%9C%89%E4%B8%BB%E6%B8%85%E5%8D%95%E5%B1%9E%E6%80%A7/"/>
+      <url>2021/02/14/Springboot/Springboot%E6%89%93%E5%8C%85jar%E4%B8%AD%E6%B2%A1%E6%9C%89%E4%B8%BB%E6%B8%85%E5%8D%95%E5%B1%9E%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<p>如果出现Spring Boot打包jar中没有主清单属性</p><p><img src="https://cdn.nlark.com/yuque/0/2021/webp/12420408/1613304346809-d746e033-e525-4186-bc17-7954f2f36079.webp" alt="image"></p><p>官方是这样描述的</p><p><a href="https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/html/getting-started.html#getting-started">https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/html/getting-started.html#getting-started</a></p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  The spring-boot-starter-parent POM includes &lt;executions&gt; <span class="keyword">configuration</span> <span class="keyword">to</span> bind the repackage goal. </span><br><span class="line"><span class="keyword">If</span> you <span class="keyword">do</span> <span class="keyword">not</span> use the parent POM, you need <span class="keyword">to</span> <span class="keyword">declare</span> this <span class="keyword">configuration</span> yourself. </span><br><span class="line">See the plugin documentation <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure><p><img src="https://cdn.nlark.com/yuque/0/2021/png/12420408/1613229859792-d9271721-76b0-405a-91ef-bf640332232f.png" alt="image.png"></p><p>大概意思就是说：引入<code>org.springframework.boot</code>父级如果不引入父级您需要自己声明配置。</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- Inherit defaults from Spring Boot --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--  最好加入这个，否则打包容易出问题  --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p>当然插件也是需要的</p><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="xml"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span></span><br><span class="line"><span class="xml">        </span><span class="xml"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span></span><br><span class="line"><span class="xml">            </span><span class="xml"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span></span><br><span class="line"><span class="xml">            </span><span class="xml"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p>这些官方文档里面也有。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Springboot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Springboot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>netty-串口接收</title>
       <link href="2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/"/>
       <url>2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/</url>
