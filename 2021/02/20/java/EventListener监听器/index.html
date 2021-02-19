@@ -22,24 +22,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"zzzzzzzs.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="如果出现Spring Boot打包jar中没有主清单属性 ​                                             官方是这样描述的 https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-boot&#x2F;docs&#x2F;2.3.4.RELEASE&#x2F;reference&#x2F;html&#x2F;getting-started.html#getting-started">
+<meta name="description" content="监听器是一个包含方法的类，该类所包含的方法在发生某些操作时将被调用。java.util.EventListener 是所有监听器都应实现的标记接口（无任何方法的接口）。 实际上，它甚至没有添加任何功能，但是对于某些IDE和代码分析工具可能会有所帮助。 因此，如果要创建自己的自定义事件（触发），则需要在事件发生时以某种方式调用所有监听器方法。 例如，您可以像下面这样进行操作： 首先，为您的监听器创建">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Springboot打包jar中没有主清单属性">
-<meta property="og:url" content="http://zzzzzzzs.com/2021/02/14/Springboot/Springboot%E6%89%93%E5%8C%85jar%E4%B8%AD%E6%B2%A1%E6%9C%89%E4%B8%BB%E6%B8%85%E5%8D%95%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:title" content="EventListener监听器">
+<meta property="og:url" content="http://zzzzzzzs.com/2021/02/20/java/EventListener%E7%9B%91%E5%90%AC%E5%99%A8/index.html">
 <meta property="og:site_name" content="码怪">
-<meta property="og:description" content="如果出现Spring Boot打包jar中没有主清单属性 ​                                             官方是这样描述的 https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-boot&#x2F;docs&#x2F;2.3.4.RELEASE&#x2F;reference&#x2F;html&#x2F;getting-started.html#getting-started">
+<meta property="og:description" content="监听器是一个包含方法的类，该类所包含的方法在发生某些操作时将被调用。java.util.EventListener 是所有监听器都应实现的标记接口（无任何方法的接口）。 实际上，它甚至没有添加任何功能，但是对于某些IDE和代码分析工具可能会有所帮助。 因此，如果要创建自己的自定义事件（触发），则需要在事件发生时以某种方式调用所有监听器方法。 例如，您可以像下面这样进行操作： 首先，为您的监听器创建">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/12420408/1613308093845-e6e81f44-3e77-4c67-8a30-b10f786884ab.png">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/12420408/1613229859792-d9271721-76b0-405a-91ef-bf640332232f.png">
-<meta property="article:published_time" content="2021-02-14T12:19:56.000Z">
-<meta property="article:modified_time" content="2021-02-14T13:19:39.388Z">
+<meta property="article:published_time" content="2021-02-19T16:07:53.000Z">
+<meta property="article:modified_time" content="2021-02-19T16:11:41.030Z">
 <meta property="article:author" content="zzzzzzzs">
-<meta property="article:tag" content="Springboot">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/12420408/1613308093845-e6e81f44-3e77-4c67-8a30-b10f786884ab.png">
 
 
-<link rel="canonical" href="http://zzzzzzzs.com/2021/02/14/Springboot/Springboot%E6%89%93%E5%8C%85jar%E4%B8%AD%E6%B2%A1%E6%9C%89%E4%B8%BB%E6%B8%85%E5%8D%95%E5%B1%9E%E6%80%A7/">
+<link rel="canonical" href="http://zzzzzzzs.com/2021/02/20/java/EventListener%E7%9B%91%E5%90%AC%E5%99%A8/">
 
 
 <script class="page-configurations">
@@ -51,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>Springboot打包jar中没有主清单属性 | 码怪</title>
+<title>EventListener监听器 | 码怪</title>
   
 
 
@@ -263,7 +260,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zzzzzzzs.com/2021/02/14/Springboot/Springboot%E6%89%93%E5%8C%85jar%E4%B8%AD%E6%B2%A1%E6%9C%89%E4%B8%BB%E6%B8%85%E5%8D%95%E5%B1%9E%E6%80%A7/">
+    <link itemprop="mainEntityOfPage" href="http://zzzzzzzs.com/2021/02/20/java/EventListener%E7%9B%91%E5%90%AC%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -276,7 +273,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Springboot打包jar中没有主清单属性
+          EventListener监听器
         </h1>
 
         <div class="post-meta-container">
@@ -288,7 +285,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-02-14 20:19:56 / 修改时间：21:19:39" itemprop="dateCreated datePublished" datetime="2021-02-14T20:19:56+08:00">2021-02-14</time>
+      <time title="创建时间：2021-02-20 00:07:53 / 修改时间：00:11:41" itemprop="dateCreated datePublished" datetime="2021-02-20T00:07:53+08:00">2021-02-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,7 +293,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Springboot/" itemprop="url" rel="index"><span itemprop="name">Springboot</span></a>
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
         </span>
     </span>
 
@@ -317,19 +314,47 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>如果出现Spring Boot打包jar中没有主清单属性</p>
-<p>​        <img src="https://cdn.nlark.com/yuque/0/2021/png/12420408/1613308093845-e6e81f44-3e77-4c67-8a30-b10f786884ab.png" alt="1.png">                                    </p>
-<p>官方是这样描述的</p>
-<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/html/getting-started.html#getting-started">https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/html/getting-started.html#getting-started</a></p>
+        <p>监听器是一个包含方法的类，该类所包含的方法在发生某些操作时将被调用。<code>java.util.EventListener</code> 是所有监听器都应实现的标记接口（无任何方法的接口）。</p>
+<p>实际上，它甚至没有添加任何功能，但是对于某些IDE和代码分析工具可能会有所帮助。</p>
+<p>因此，如果要创建自己的自定义事件（触发），则需要在事件发生时以某种方式调用所有监听器方法。</p>
+<p>例如，您可以像下面这样进行操作：</p>
+<p>首先，为您的监听器创建一个扩展了的接口<code>EventListener</code>：</p>
 <a id="more"></a>
 
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  The spring-boot-starter-parent POM includes &lt;executions&gt; <span class="keyword">configuration</span> <span class="keyword">to</span> bind the repackage goal. </span><br><span class="line"><span class="keyword">If</span> you <span class="keyword">do</span> <span class="keyword">not</span> use the parent POM, you need <span class="keyword">to</span> <span class="keyword">declare</span> this <span class="keyword">configuration</span> yourself. </span><br><span class="line">See the plugin documentation <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/12420408/1613229859792-d9271721-76b0-405a-91ef-bf640332232f.png" alt="image.png"></p>
-<p>大概意思就是说：引入<code>org.springframework.boot</code>父级如果不引入父级您需要自己声明配置。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Inherit defaults from Spring Boot --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  最好加入这个，否则打包容易出问题  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当然插件也是需要的</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这些官方文档里面也有。</p>
+<p>MyListener.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyListener</span> <span class="keyword">extends</span> <span class="title">EventListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onEvent</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，您可以需要实现该接口MyListener</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyListenerImpl</span> <span class="keyword">implements</span> <span class="title">MyListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyListenerImpl</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.msg=msg;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，您将需要创建一种机制来注册和调用所有事件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Collection&lt;MyListener&gt; listeners=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(MyListener listener)</span></span>&#123;</span><br><span class="line">    listeners.add(listener);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eventHappens</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(MyListener listener:listeners)&#123;</span><br><span class="line">        listener.onEvent();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>您可以使用注册</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">register(<span class="keyword">new</span> MyListenerImpl(<span class="string">&quot;Event occurs&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p>每当<code>eventHappens()</code>调用时（例如：收到网络数据包就可以调用它），所有注册的监听器都将被执行。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">register(<span class="keyword">new</span> MyListenerImpl(<span class="string">&quot;listener 1 called&quot;</span>));</span><br><span class="line">register(<span class="keyword">new</span> MyListenerImpl(<span class="string">&quot;listener 2 called&quot;</span>));</span><br><span class="line">System.out.println(<span class="string">&quot;calling event&quot;</span>);</span><br><span class="line">eventHappens();</span><br></pre></td></tr></table></figure>
+<p>会打印</p>
+<blockquote>
+<p>calling event</p>
+<p>listener 1 called</p>
+<p>listener 2 called</p>
+</blockquote>
+<p>上述代码在：<a target="_blank" rel="noopener" href="https://github.com/zzzzzzzs/Java-self-study">https://github.com/zzzzzzzs/Java-self-study</a></p>
+<p>上述的过程主要是：</p>
+<p>1、首先有一个继承<code>java.util.EventListener</code>的接口，该接口里面有一个没有实现的空方法。</p>
+<p>2、实现该接口，将该接口里面的方法实现。</p>
+<p>3、然后用一个集合注册、统一管理监听器。</p>
+<p>4、写一个机制来调用所有事件。</p>
+<blockquote>
+<p>要习惯在创建的对象中实现方法。有很多时候都是这么用的。</p>
+</blockquote>
+<p>其实监听器是一种模式，更方便将程序抽象，遵循了ocp原则，方便维护。</p>
+<p>有的时候会用到事件循环，来触发监听器。</p>
+<p>Here is yuque doc card, click on the link to view:<a target="_blank" rel="noopener" href="https://www.yuque.com/zhaoshuo-zrdce/go0yss/drtb7g">https://www.yuque.com/zhaoshuo-zrdce/go0yss/drtb7g</a></p>
+<p>我看过的一个rxtxcomm的串口包，它的实现在native方法中实现了事件循环eventloop，读取到串口的数据，然后触发监听器。</p>
+<p>Here is yuque doc card, click on the link to view:<a target="_blank" rel="noopener" href="https://www.yuque.com/zhaoshuo-zrdce/iay8wp/rsca8d">https://www.yuque.com/zhaoshuo-zrdce/iay8wp/rsca8d</a></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/60931587/what-is-a-java-util-eventlistener">https://stackoverflow.com/questions/60931587/what-is-a-java-util-eventlistener</a></p>
 
     </div>
 
@@ -356,21 +381,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Springboot/" rel="tag"># Springboot</a>
+              <a href="/tags/java/" rel="tag"># java</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/13/netty/netty-%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6/" rel="prev" title="netty-串口接收">
-                  <i class="fa fa-chevron-left"></i> netty-串口接收
+                <a href="/2021/02/19/java/Java%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event%20loop%EF%BC%89/" rel="prev" title="Java中的事件循环（event loop）">
+                  <i class="fa fa-chevron-left"></i> Java中的事件循环（event loop）
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/14/Springboot/Springboot%E6%95%B4%E5%90%88netty%E4%B8%B2%E5%8F%A3/" rel="next" title="Springboot整合netty串口">
-                  Springboot整合netty串口 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -479,7 +501,7 @@ NexT.utils.loadComments('.gitalk-container', () => {
       repo        : 'zzzzzzzs.github.io',
       owner       : 'zzzzzzzs',
       admin       : ['zzzzzzzs'],
-      id          : '8b9e9b299ae750c2e97a330f0cf91d6e',
+      id          : '7800c75889aeb3b4563293ab6c843186',
         language: 'zh-CN',
       distractionFreeMode: true
     });

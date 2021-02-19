@@ -195,7 +195,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -254,6 +254,91 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://zzzzzzzs.com/2021/02/20/java/EventListener%E7%9B%91%E5%90%AC%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzzzzzzs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码怪">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/20/java/EventListener%E7%9B%91%E5%90%AC%E5%99%A8/" class="post-title-link" itemprop="url">EventListener监听器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-20 00:07:53 / 修改时间：00:11:41" itemprop="dateCreated datePublished" datetime="2021-02-20T00:07:53+08:00">2021-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>监听器是一个包含方法的类，该类所包含的方法在发生某些操作时将被调用。<code>java.util.EventListener</code> 是所有监听器都应实现的标记接口（无任何方法的接口）。</p>
+<p>实际上，它甚至没有添加任何功能，但是对于某些IDE和代码分析工具可能会有所帮助。</p>
+<p>因此，如果要创建自己的自定义事件（触发），则需要在事件发生时以某种方式调用所有监听器方法。</p>
+<p>例如，您可以像下面这样进行操作：</p>
+<p>首先，为您的监听器创建一个扩展了的接口<code>EventListener</code>：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/20/java/EventListener%E7%9B%91%E5%90%AC%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://zzzzzzzs.com/2021/02/19/java/Java%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event%20loop%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,10 +362,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-02-19 17:37:27 / 修改时间：17:42:16" itemprop="dateCreated datePublished" datetime="2021-02-19T17:37:27+08:00">2021-02-19</time>
+      <time title="创建时间：2021-02-19 17:37:27" itemprop="dateCreated datePublished" datetime="2021-02-19T17:37:27+08:00">2021-02-19</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-20 00:08:46" itemprop="dateModified" datetime="2021-02-20T00:08:46+08:00">2021-02-20</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -304,15 +395,15 @@
           <p>在stackoverflow看到的</p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42278328/event-loop-in-java">https://stackoverflow.com/questions/42278328/event-loop-in-java</a></p>
 <p>事件循环就是<code>while(true)</code></p>
-<h2 id="轮询方式"><a href="#轮询方式" class="headerlink" title="轮询方式"></a>轮询方式</h2><p>答案完全取决于您在此块中执行的操作：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">    <span class="comment">// check queue and execute any callback...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果某个元素可以用，队列检查到堵塞，则就CPU使用率而言，“最有效”的是轮询方式。如果检查没有阻塞，则调用线程将旋转，并且您将在循环期间以最大容量运行一个硬件线程。但是，这消除了同步成本，并为您提供了绝对最佳的<em>响应时间</em>。下面是一些例子：</p>
-<h2 id="阻塞队列（对CPU的负担最少，但以同步为代价）"><a href="#阻塞队列（对CPU的负担最少，但以同步为代价）" class="headerlink" title="阻塞队列（对CPU的负担最少，但以同步为代价）"></a>阻塞队列（对CPU的负担最少，但以同步为代价）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;T&gt; q = <span class="keyword">new</span> LinkedBlockingQueue&lt;&gt;();</span><br><span class="line">...</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">    T t = q.take();</span><br><span class="line">    <span class="comment">//t will never be null, do something with it here.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="非阻塞队列（对CPU的负担最大，但没有同步成本）"><a href="#非阻塞队列（对CPU的负担最大，但没有同步成本）" class="headerlink" title="非阻塞队列（对CPU的负担最大，但没有同步成本）"></a>非阻塞队列（对CPU的负担最大，但没有同步成本）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;T&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">...</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">    T t;</span><br><span class="line">    <span class="keyword">while</span>((t = q.poll()) == <span class="keyword">null</span>); <span class="comment">//busy polling!</span></span><br><span class="line">    <span class="comment">//t will never be null, do something with it here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ScheduledExecutorService"><a href="#ScheduledExecutorService" class="headerlink" title="ScheduledExecutorService"></a>ScheduledExecutorService</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledExecutorService.html">https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledExecutorService.html</a></p>
-<p>最后…如果最终使用计划的执行程序服务，则将强制两次轮询之间的非零等待时间。与完整的BlockingQueue实现相比，这在CPU的性能上是同样高效的，但是您还不得不在响应时间上浪费时间，直到调度间隔。对于您的应用程序来说，什么是“最佳”取决于您是否有能力等待两次轮询之间的最短睡眠时间（我认为您可以安排微秒的时间…？），或者是否需要更快的时间来进行繁忙的轮询方案。</p>
-<p>这个网站上也讲了<a target="_blank" rel="noopener" href="https://activej.io/eventloop.html">https://activej.io/eventloop.html</a></p>
-
+<h2 id="轮询方式"><a href="#轮询方式" class="headerlink" title="轮询方式"></a>轮询方式</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/19/java/Java%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event%20loop%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
