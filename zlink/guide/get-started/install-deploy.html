@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-beta.60" />
+    <meta name="theme" content="VuePress Theme Hope" />
+    <meta property="og:url" content="https://zzzzzzzs.github.io/zlink/guide/get-started/install-deploy.html"><meta property="og:site_name" content="zlink"><meta property="og:title" content="安装部署"><meta property="og:description" content="下载 下载链接 (https://github.com/zzzzzzzs/zlink/releases) 软件需求 Linux 操作系统; Java 11; zlink 部署 解压文件 文件大纲 配置文件 修改配置文件，主要是修改数据库项目的东西 数据库初始化 首先创建 zlink 数据库 然后在数据库中执行 zlink-release-{versio..."><meta property="og:type" content="article"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2023-02-02T07:37:30.000Z"><meta property="article:modified_time" content="2023-02-02T07:37:30.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"安装部署","image":[""],"dateModified":"2023-02-02T07:37:30.000Z","author":[]}</script><title>安装部署 | zlink</title><meta name="description" content="下载 下载链接 (https://github.com/zzzzzzzs/zlink/releases) 软件需求 Linux 操作系统; Java 11; zlink 部署 解压文件 文件大纲 配置文件 修改配置文件，主要是修改数据库项目的东西 数据库初始化 首先创建 zlink 数据库 然后在数据库中执行 zlink-release-{versio...">
+    <style>
+      :root {
+        --bg-color: #fff;
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: #1d1e1f;
+      }
+
+      html,
+      body {
+        background: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.querySelector("html").setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link rel="preload" href="/assets/style-974c5ea2.css" as="style"><link rel="stylesheet" href="/assets/style-974c5ea2.css">
+    <link rel="modulepreload" href="/assets/app-99538d04.js"><link rel="modulepreload" href="/assets/framework-d65a3be7.js"><link rel="modulepreload" href="/assets/install-deploy.html-3bad2f83.js"><link rel="modulepreload" href="/assets/install-deploy.html-bcbe179a.js">
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="skip-link sr-only">跳至主要內容</a><!--]--><!--[--><div class="theme-container has-toc"><!--[--><header class="navbar" id="navbar"><div class="navbar-left"><button class="toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><!----><!--]--><a href="/" class="brand"><img class="logo" src="/logo.svg" alt="zlink"><!----><span class="site-name hide-in-pad">zlink</span></a><!--[--><!----><!--]--></div><div class="navbar-center"><!--[--><!----><!--]--><nav class="nav-links"><div class="nav-item hide-in-mobile"><a href="/" class="nav-link" aria-label="主页"><!---->主页<!----></a></div><div class="nav-item hide-in-mobile"><a href="/guide/get-started/" class="nav-link active" aria-label="文档"><!---->文档<!----></a></div></nav><!--[--><!----><!--]--></div><div class="navbar-right"><!--[--><!----><!--]--><div class="nav-item"><div class="dropdown-wrapper i18n-dropdown"><button class="dropdown-title" type="button" aria-label="选择语言"><!--[--><svg xmlns="http://www.w3.org/2000/svg" class="icon i18n-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="i18n icon" style="width:1rem;height:1rem;vertical-align:middle;"><path d="M379.392 460.8 494.08 575.488l-42.496 102.4L307.2 532.48 138.24 701.44l-71.68-72.704L234.496 460.8l-45.056-45.056c-27.136-27.136-51.2-66.56-66.56-108.544h112.64c7.68 14.336 16.896 27.136 26.112 35.84l45.568 46.08 45.056-45.056C382.976 312.32 409.6 247.808 409.6 204.8H0V102.4h256V0h102.4v102.4h256v102.4H512c0 70.144-37.888 161.28-87.04 210.944L378.88 460.8zM576 870.4 512 1024H409.6l256-614.4H768l256 614.4H921.6l-64-153.6H576zM618.496 768h196.608L716.8 532.48 618.496 768z"></path></svg><!--]--><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-current="page" href="/guide/get-started/install-deploy.html" class="router-link-active router-link-exact-active nav-link active" aria-label="简体中文"><!---->简体中文<!----></a></li><li class="dropdown-item"><a href="/en/" class="nav-link" aria-label="English"><!---->English<!----></a></li></ul></button></div></div><div class="nav-item"><a class="repo-link" href="https://github.com/zzzzzzzs/zlink" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="github icon" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="nav-item hide-in-mobile"><button id="appearance-switch"><svg xmlns="http://www.w3.org/2000/svg" class="icon auto-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="auto icon" style="display:block;"><path d="M512 992C246.92 992 32 777.08 32 512S246.92 32 512 32s480 214.92 480 480-214.92 480-480 480zm0-840c-198.78 0-360 161.22-360 360 0 198.84 161.22 360 360 360s360-161.16 360-360c0-198.78-161.22-360-360-360zm0 660V212c165.72 0 300 134.34 300 300 0 165.72-134.28 300-300 300z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="dark icon" style="display:none;"><path d="M524.8 938.667h-4.267a439.893 439.893 0 0 1-313.173-134.4 446.293 446.293 0 0 1-11.093-597.334A432.213 432.213 0 0 1 366.933 90.027a42.667 42.667 0 0 1 45.227 9.386 42.667 42.667 0 0 1 10.24 42.667 358.4 358.4 0 0 0 82.773 375.893 361.387 361.387 0 0 0 376.747 82.774 42.667 42.667 0 0 1 54.187 55.04 433.493 433.493 0 0 1-99.84 154.88 438.613 438.613 0 0 1-311.467 128z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="light icon" style="display:none;"><path d="M952 552h-80a40 40 0 0 1 0-80h80a40 40 0 0 1 0 80zM801.88 280.08a41 41 0 0 1-57.96-57.96l57.96-58a41.04 41.04 0 0 1 58 58l-58 57.96zM512 752a240 240 0 1 1 0-480 240 240 0 0 1 0 480zm0-560a40 40 0 0 1-40-40V72a40 40 0 0 1 80 0v80a40 40 0 0 1-40 40zm-289.88 88.08-58-57.96a41.04 41.04 0 0 1 58-58l57.96 58a41 41 0 0 1-57.96 57.96zM192 512a40 40 0 0 1-40 40H72a40 40 0 0 1 0-80h80a40 40 0 0 1 40 40zm30.12 231.92a41 41 0 0 1 57.96 57.96l-57.96 58a41.04 41.04 0 0 1-58-58l58-57.96zM512 832a40 40 0 0 1 40 40v80a40 40 0 0 1-80 0v-80a40 40 0 0 1 40-40zm289.88-88.08 58 57.96a41.04 41.04 0 0 1-58 58l-57.96-58a41 41 0 0 1 57.96-57.96z"></path></svg></button></div><!----><!--[--><!----><!--]--><button class="toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span class="button-container"><span class="button-top"></span><span class="button-middle"></span><span class="button-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow left"></span></div><aside class="sidebar" id="sidebar"><!--[--><!----><!--]--><ul class="sidebar-links"><li><section class="sidebar-group"><p class="sidebar-heading active"><!----><span class="title">zlink</span><!----></p><ul class="sidebar-links"><li><!--[--><a href="/guide/get-started/" class="nav-link sidebar-link sidebar-page" aria-label="zlink 介绍"><!---->zlink 介绍<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a aria-current="page" href="/guide/get-started/install-deploy.html" class="router-link-active router-link-exact-active nav-link active sidebar-link sidebar-page active" aria-label="安装部署"><!---->安装部署<!----></a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#下载" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="下载"><!---->下载<!----></a><ul class="sidebar-sub-headers"></ul></li><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#软件需求" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="软件需求"><!---->软件需求<!----></a><ul class="sidebar-sub-headers"></ul></li><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#zlink-部署" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="zlink 部署"><!---->zlink 部署<!----></a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#解压文件" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="解压文件"><!---->解压文件<!----></a><ul class="sidebar-sub-headers"></ul></li><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#配置文件" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="配置文件"><!---->配置文件<!----></a><ul class="sidebar-sub-headers"></ul></li></ul></li><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#数据库初始化" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="数据库初始化"><!---->数据库初始化<!----></a><ul class="sidebar-sub-headers"></ul></li><li class="sidebar-sub-header"><a aria-current="page" href="/guide/get-started/install-deploy.html#启停-zlink" class="router-link-active router-link-exact-active nav-link sidebar-link heading" aria-label="启停 zlink"><!---->启停 zlink<!----></a><ul class="sidebar-sub-headers"></ul></li></ul><!--]--></li><li><!--[--><a href="/guide/get-started/table-design.html" class="nav-link sidebar-link sidebar-page" aria-label="数据表设计"><!---->数据表设计<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/guide/get-started/use-guide.html" class="nav-link sidebar-link sidebar-page" aria-label="使用指南"><!---->使用指南<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/guide/get-started/dev-guide.html" class="nav-link sidebar-link sidebar-page" aria-label="开发者指南"><!---->开发者指南<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/guide/get-started/upcoming-plans.html" class="nav-link sidebar-link sidebar-page" aria-label="近期计划"><!---->近期计划<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li></ul></section></li></ul><!--[--><!----><!--]--></aside><!--[--><main class="page" id="main-content"><!--[--><!----><nav class="breadcrumb disable"></nav><div class="page-title"><h1><!---->安装部署</h1><!----><hr></div><div class="toc-place-holder"><aside id="toc"><div class="toc-header">此页内容<button class="print-button" title="print"><svg xmlns="http://www.w3.org/2000/svg" class="icon print-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="print icon"><path d="M819.2 364.8h-44.8V128c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v236.8h-44.8C145.067 364.8 96 413.867 96 473.6v192c0 59.733 49.067 108.8 108.8 108.8h44.8V896c0 17.067 14.933 32 32 32h460.8c17.067 0 32-14.933 32-32V774.4h44.8c59.733 0 108.8-49.067 108.8-108.8v-192c0-59.733-49.067-108.8-108.8-108.8zM313.6 160h396.8v204.8H313.6V160zm396.8 704H313.6V620.8h396.8V864zM864 665.6c0 25.6-19.2 44.8-44.8 44.8h-44.8V588.8c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v121.6h-44.8c-25.6 0-44.8-19.2-44.8-44.8v-192c0-25.6 19.2-44.8 44.8-44.8h614.4c25.6 0 44.8 19.2 44.8 44.8v192z"></path></svg></button></div><div class="toc-wrapper"><ul class="toc-list"><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#下载" class="router-link-active router-link-exact-active toc-link level2">下载</a></li><!----><!--]--><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#软件需求" class="router-link-active router-link-exact-active toc-link level2">软件需求</a></li><!----><!--]--><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#zlink-部署" class="router-link-active router-link-exact-active toc-link level2">zlink 部署</a></li><ul class="toc-list"><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#解压文件" class="router-link-active router-link-exact-active toc-link level3">解压文件</a></li><!----><!--]--><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#配置文件" class="router-link-active router-link-exact-active toc-link level3">配置文件</a></li><!----><!--]--></ul><!--]--><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#数据库初始化" class="router-link-active router-link-exact-active toc-link level2">数据库初始化</a></li><!----><!--]--><!--[--><li class="toc-item"><a aria-current="page" href="/guide/get-started/install-deploy.html#启停-zlink" class="router-link-active router-link-exact-active toc-link level2">启停 zlink</a></li><!----><!--]--></ul></div></aside></div><!----><div class="theme-hope-content"><h2 id="下载" tabindex="-1"><a class="header-anchor" href="#下载" aria-hidden="true">#</a> 下载</h2><p><a href="https://github.com/zzzzzzzs/zlink/releases" target="_blank" rel="noopener noreferrer">下载链接<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p><h2 id="软件需求" tabindex="-1"><a class="header-anchor" href="#软件需求" aria-hidden="true">#</a> 软件需求</h2><ul><li>Linux 操作系统</li><li>Java 11</li></ul><h2 id="zlink-部署" tabindex="-1"><a class="header-anchor" href="#zlink-部署" aria-hidden="true">#</a> zlink 部署</h2><h3 id="解压文件" tabindex="-1"><a class="header-anchor" href="#解压文件" aria-hidden="true">#</a> 解压文件</h3><div class="language-bash" data-ext="sh"><pre class="language-bash"><code><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> zlink-release-<span class="token punctuation">{</span>version<span class="token punctuation">}</span>.tar.gz
+</code></pre></div><p>文件大纲</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token operator">|</span>-- bin
+<span class="token operator">|</span>   <span class="token variable"><span class="token variable">`</span>-- zlink.sh
+<span class="token operator">|</span>-- config
+<span class="token operator">|</span>   <span class="token operator">|</span>-- application.yml
+<span class="token operator">|</span>   <span class="token operator">|</span>-- db
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token variable">`</span></span>-- zlink.sql
+<span class="token operator">|</span>   <span class="token variable"><span class="token variable">`</span>-- log4j2.xml
+<span class="token variable">`</span></span>-- lib
+    <span class="token operator">|</span>-- HikariCP-4.0.3.jar
+    <span class="token operator">|</span>-- accessors-smart-2.4.8.jar
+    <span class="token operator">|</span>-- akka-actor_2.12-2.5.21.jar
+    <span class="token operator">|</span>-- akka-protobuf_2.12-2.5.21.jar
+    <span class="token operator">|</span>-- akka-slf4j_2.12-2.5.21.jar
+    <span class="token operator">|</span>-- akka-stream_2.12-2.5.21.jar
+    <span class="token operator">|</span>-- aopalliance-1.0.jar
+    <span class="token operator">|</span>-- asm-9.1.jar
+    <span class="token operator">|</span>-- audience-annotations-0.5.0.jar
+    <span class="token operator">|</span>-- avatica-core-1.17.0.jar
+    <span class="token operator">|</span>-- avro-1.7.7.jar
+    <span class="token operator">|</span>-- awaitility-4.2.0.jar
+    <span class="token operator">|</span>-- checker-qual-3.12.0.jar
+    <span class="token operator">|</span>-- chill-java-0.7.6.jar
+    <span class="token operator">|</span>-- chill_2.12-0.7.6.jar
+    <span class="token operator">|</span>-- commons-beanutils-1.9.3.jar
+    <span class="token operator">|</span>-- commons-cli-1.3.1.jar
+    <span class="token operator">|</span>-- commons-codec-1.15.jar
+    <span class="token operator">|</span>-- commons-collections-3.2.2.jar
+    <span class="token operator">|</span>-- commons-compiler-3.1.8.jar
+    <span class="token operator">|</span>-- commons-compress-1.18.jar
+    <span class="token operator">|</span>-- commons-configuration2-2.1.1.jar
+    <span class="token operator">|</span>-- commons-daemon-1.0.13.jar
+    <span class="token operator">|</span>-- commons-io-2.5.jar
+    <span class="token operator">|</span>-- commons-lang-2.6.jar
+    <span class="token operator">|</span>-- commons-lang3-3.12.0.jar
+    <span class="token operator">|</span>-- commons-logging-1.1.3.jar
+    <span class="token operator">|</span>-- commons-math3-3.5.jar
+    <span class="token operator">|</span>-- commons-net-3.6.jar
+    <span class="token operator">|</span>-- config-1.3.3.jar
+    <span class="token operator">|</span>-- curator-client-2.13.0.jar
+    <span class="token operator">|</span>-- curator-framework-2.13.0.jar
+    <span class="token operator">|</span>-- curator-recipes-2.13.0.jar
+    <span class="token operator">|</span>-- druid-1.2.8.jar
+    <span class="token operator">|</span>-- druid-spring-boot-starter-1.2.8.jar
+    <span class="token operator">|</span>-- error_prone_annotations-2.11.0.jar
+    <span class="token operator">|</span>-- failureaccess-1.0.1.jar
+    <span class="token operator">|</span>-- flink-annotations-1.13.6.jar
+    <span class="token operator">|</span>-- flink-clients_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-connector-base-1.13.6.jar
+    <span class="token operator">|</span>-- flink-connector-files-1.13.6.jar
+    <span class="token operator">|</span>-- flink-connector-jdbc_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-core-1.13.6.jar
+    <span class="token operator">|</span>-- flink-file-sink-common-1.13.6.jar
+    <span class="token operator">|</span>-- flink-hadoop-fs-1.13.6.jar
+    <span class="token operator">|</span>-- flink-java-1.13.6.jar
+    <span class="token operator">|</span>-- flink-metrics-core-1.13.6.jar
+    <span class="token operator">|</span>-- flink-optimizer_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-queryable-state-client-java-1.13.6.jar
+    <span class="token operator">|</span>-- flink-runtime-web_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-runtime_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-scala_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-shaded-asm-7-7.1-13.0.jar
+    <span class="token operator">|</span>-- flink-shaded-guava-18.0-13.0.jar
+    <span class="token operator">|</span>-- flink-shaded-jackson-2.12.1-13.0.jar
+    <span class="token operator">|</span>-- flink-shaded-netty-4.1.49.Final-13.0.jar
+    <span class="token operator">|</span>-- flink-shaded-zookeeper-3-3.4.14-13.0.jar
+    <span class="token operator">|</span>-- flink-sql-connector-mysql-cdc-2.2.1.jar
+    <span class="token operator">|</span>-- flink-streaming-java_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-streaming-scala_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-api-java-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-api-java-bridge_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-api-scala-bridge_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-api-scala_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-common-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-planner-blink_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-table-runtime-blink_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- flink-yarn_2.12-1.13.6.jar
+    <span class="token operator">|</span>-- force-shading-1.13.6.jar
+    <span class="token operator">|</span>-- grizzled-slf4j_2.12-1.3.2.jar
+    <span class="token operator">|</span>-- gson-2.9.1.jar
+    <span class="token operator">|</span>-- guava-31.1-jre.jar
+    <span class="token operator">|</span>-- guice-4.0.jar
+    <span class="token operator">|</span>-- guice-servlet-4.0.jar
+    <span class="token operator">|</span>-- hadoop-annotations-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-auth-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-common-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-hdfs-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-hdfs-client-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-mapreduce-client-core-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-yarn-api-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-yarn-client-3.1.3.jar
+    <span class="token operator">|</span>-- hadoop-yarn-common-3.1.3.jar
+    <span class="token operator">|</span>-- hamcrest-2.2.jar
+    <span class="token operator">|</span>-- htrace-core4-4.1.0-incubating.jar
+    <span class="token operator">|</span>-- httpclient-4.5.13.jar
+    <span class="token operator">|</span>-- httpcore-4.4.15.jar
+    <span class="token operator">|</span>-- hutool-all-5.8.9.jar
+    <span class="token operator">|</span>-- j2objc-annotations-1.3.jar
+    <span class="token operator">|</span>-- jackson-annotations-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-core-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-core-asl-1.9.2.jar
+    <span class="token operator">|</span>-- jackson-databind-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-datatype-jdk8-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-datatype-jsr310-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-jaxrs-1.9.2.jar
+    <span class="token operator">|</span>-- jackson-jaxrs-base-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-jaxrs-json-provider-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-mapper-asl-1.9.2.jar
+    <span class="token operator">|</span>-- jackson-module-jaxb-annotations-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-module-parameter-names-2.13.4.jar
+    <span class="token operator">|</span>-- jackson-xc-1.9.2.jar
+    <span class="token operator">|</span>-- jakarta.activation-api-1.2.2.jar
+    <span class="token operator">|</span>-- jakarta.annotation-api-1.3.5.jar
+    <span class="token operator">|</span>-- jakarta.xml.bind-api-2.3.3.jar
+    <span class="token operator">|</span>-- janino-3.1.8.jar
+    <span class="token operator">|</span>-- javassist-3.24.0-GA.jar
+    <span class="token operator">|</span>-- javax.activation-api-1.2.0.jar
+    <span class="token operator">|</span>-- javax.annotation-api-1.3.2.jar
+    <span class="token operator">|</span>-- javax.inject-1.jar
+    <span class="token operator">|</span>-- javax.servlet-api-4.0.1.jar
+    <span class="token operator">|</span>-- jaxb-api-2.3.1.jar
+    <span class="token operator">|</span>-- jaxb-impl-2.2.3-1.jar
+    <span class="token operator">|</span>-- jcip-annotations-1.0-1.jar
+    <span class="token operator">|</span>-- jersey-client-1.19.jar
+    <span class="token operator">|</span>-- jersey-core-1.19.jar
+    <span class="token operator">|</span>-- jersey-guice-1.19.jar
+    <span class="token operator">|</span>-- jersey-json-1.19.jar
+    <span class="token operator">|</span>-- jersey-server-1.19.jar
+    <span class="token operator">|</span>-- jersey-servlet-1.19.jar
+    <span class="token operator">|</span>-- jettison-1.1.jar
+    <span class="token operator">|</span>-- jetty-http-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-io-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-security-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-server-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-servlet-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-util-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-util-ajax-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-webapp-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jetty-xml-9.4.49.v20220914.jar
+    <span class="token operator">|</span>-- jline-0.9.94.jar
+    <span class="token operator">|</span>-- jsch-0.1.54.jar
+    <span class="token operator">|</span>-- json-smart-2.4.8.jar
+    <span class="token operator">|</span>-- jsp-api-2.1.jar
+    <span class="token operator">|</span>-- jsqlparser-3.2.jar
+    <span class="token operator">|</span>-- jsr305-3.0.2.jar
+    <span class="token operator">|</span>-- jsr311-api-1.1.1.jar
+    <span class="token operator">|</span>-- jul-to-slf4j-1.7.36.jar
+    <span class="token operator">|</span>-- kerb-admin-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-client-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-common-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-core-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-crypto-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-identity-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-server-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-simplekdc-1.0.1.jar
+    <span class="token operator">|</span>-- kerb-util-1.0.1.jar
+    <span class="token operator">|</span>-- kerby-asn1-1.0.1.jar
+    <span class="token operator">|</span>-- kerby-config-1.0.1.jar
+    <span class="token operator">|</span>-- kerby-pkix-1.0.1.jar
+    <span class="token operator">|</span>-- kerby-util-1.0.1.jar
+    <span class="token operator">|</span>-- kerby-xdr-1.0.1.jar
+    <span class="token operator">|</span>-- kryo-2.24.0.jar
+    <span class="token operator">|</span>-- leveldbjni-all-1.8.jar
+    <span class="token operator">|</span>-- listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+    <span class="token operator">|</span>-- log4j-1.2.17.jar
+    <span class="token operator">|</span>-- log4j-api-2.17.2.jar
+    <span class="token operator">|</span>-- log4j-core-2.17.2.jar
+    <span class="token operator">|</span>-- log4j-jul-2.17.2.jar
+    <span class="token operator">|</span>-- log4j-slf4j-impl-2.17.2.jar
+    <span class="token operator">|</span>-- lombok-1.18.24.jar
+    <span class="token operator">|</span>-- lz4-java-1.6.0.jar
+    <span class="token operator">|</span>-- minlog-1.2.jar
+    <span class="token operator">|</span>-- mybatis-3.5.6.jar
+    <span class="token operator">|</span>-- mybatis-plus-3.4.1.jar
+    <span class="token operator">|</span>-- mybatis-plus-annotation-3.4.1.jar
+    <span class="token operator">|</span>-- mybatis-plus-boot-starter-3.4.1.jar
+    <span class="token operator">|</span>-- mybatis-plus-core-3.4.1.jar
+    <span class="token operator">|</span>-- mybatis-plus-extension-3.4.1.jar
+    <span class="token operator">|</span>-- mybatis-plus-generator-3.4.1.jar
+    <span class="token operator">|</span>-- mybatis-spring-2.0.5.jar
+    <span class="token operator">|</span>-- mysql-connector-java-8.0.22.jar
+    <span class="token operator">|</span>-- netty-3.10.5.Final.jar
+    <span class="token operator">|</span>-- netty-all-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-buffer-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-dns-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-haproxy-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-http-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-http2-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-memcache-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-mqtt-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-redis-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-smtp-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-socks-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-stomp-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-codec-xml-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-common-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-handler-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-handler-proxy-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-resolver-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-resolver-dns-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-resolver-dns-classes-macos-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-resolver-dns-native-macos-4.1.84.Final-osx-aarch_64.jar
+    <span class="token operator">|</span>-- netty-resolver-dns-native-macos-4.1.84.Final-osx-x86_64.jar
+    <span class="token operator">|</span>-- netty-transport-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-transport-classes-epoll-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-transport-classes-kqueue-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-transport-native-epoll-4.1.84.Final-linux-aarch_64.jar
+    <span class="token operator">|</span>-- netty-transport-native-epoll-4.1.84.Final-linux-x86_64.jar
+    <span class="token operator">|</span>-- netty-transport-native-kqueue-4.1.84.Final-osx-aarch_64.jar
+    <span class="token operator">|</span>-- netty-transport-native-kqueue-4.1.84.Final-osx-x86_64.jar
+    <span class="token operator">|</span>-- netty-transport-native-unix-common-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-transport-rxtx-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-transport-sctp-4.1.84.Final.jar
+    <span class="token operator">|</span>-- netty-transport-udt-4.1.84.Final.jar
+    <span class="token operator">|</span>-- nimbus-jose-jwt-4.41.1.jar
+    <span class="token operator">|</span>-- objenesis-2.1.jar
+    <span class="token operator">|</span>-- okhttp-2.7.5.jar
+    <span class="token operator">|</span>-- okio-1.6.0.jar
+    <span class="token operator">|</span>-- paranamer-2.3.jar
+    <span class="token operator">|</span>-- postgresql-42.2.14.jar
+    <span class="token operator">|</span>-- protobuf-java-2.5.0.jar
+    <span class="token operator">|</span>-- re2j-1.1.jar
+    <span class="token operator">|</span>-- reactive-streams-1.0.4.jar
+    <span class="token operator">|</span>-- reload4j-1.2.19.jar
+    <span class="token operator">|</span>-- scala-compiler-2.12.7.jar
+    <span class="token operator">|</span>-- scala-java8-compat_2.12-0.8.0.jar
+    <span class="token operator">|</span>-- scala-library-2.12.7.jar
+    <span class="token operator">|</span>-- scala-parser-combinators_2.12-1.1.1.jar
+    <span class="token operator">|</span>-- scala-reflect-2.12.7.jar
+    <span class="token operator">|</span>-- scala-xml_2.12-1.0.6.jar
+    <span class="token operator">|</span>-- scopt_2.12-3.5.0.jar
+    <span class="token operator">|</span>-- slf4j-api-1.7.36.jar
+    <span class="token operator">|</span>-- slf4j-reload4j-1.7.36.jar
+    <span class="token operator">|</span>-- snakeyaml-1.30.jar
+    <span class="token operator">|</span>-- snappy-java-1.1.8.3.jar
+    <span class="token operator">|</span>-- spring-aop-5.3.23.jar
+    <span class="token operator">|</span>-- spring-beans-5.3.23.jar
+    <span class="token operator">|</span>-- spring-boot-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-autoconfigure-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-starter-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-starter-jdbc-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-starter-json-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-starter-log4j2-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-starter-tomcat-2.7.5.jar
+    <span class="token operator">|</span>-- spring-boot-starter-web-2.7.5.jar
+    <span class="token operator">|</span>-- spring-context-5.3.23.jar
+    <span class="token operator">|</span>-- spring-core-5.3.23.jar
+    <span class="token operator">|</span>-- spring-expression-5.3.23.jar
+    <span class="token operator">|</span>-- spring-jcl-5.3.23.jar
+    <span class="token operator">|</span>-- spring-jdbc-5.3.23.jar
+    <span class="token operator">|</span>-- spring-tx-5.3.23.jar
+    <span class="token operator">|</span>-- spring-web-5.3.23.jar
+    <span class="token operator">|</span>-- spring-webmvc-5.3.23.jar
+    <span class="token operator">|</span>-- ssl-config-core_2.12-0.3.7.jar
+    <span class="token operator">|</span>-- stax2-api-3.1.4.jar
+    <span class="token operator">|</span>-- token-provider-1.0.1.jar
+    <span class="token operator">|</span>-- tomcat-embed-core-9.0.68.jar
+    <span class="token operator">|</span>-- tomcat-embed-el-9.0.68.jar
+    <span class="token operator">|</span>-- tomcat-embed-websocket-9.0.68.jar
+    <span class="token operator">|</span>-- velocity-engine-core-2.3.jar
+    <span class="token operator">|</span>-- woodstox-core-5.0.3.jar
+    <span class="token operator">|</span>-- zlink-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-admin-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-cdc-1.13-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-common-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-flink-1.13-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-metadata-base-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-metadata-mysql-0.1.0.jar
+    <span class="token operator">|</span>-- zlink-metadata-postgresql-0.1.0.jar
+    `-- zookeeper-3.4.13.jar
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="配置文件" tabindex="-1"><a class="header-anchor" href="#配置文件" aria-hidden="true">#</a> 配置文件</h3><p>修改配置文件，主要是修改数据库项目的东西</p><div class="language-bash" data-ext="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> zlink-release-<span class="token punctuation">{</span>version<span class="token punctuation">}</span>/config
+<span class="token function">vim</span> application.yml
+</code></pre></div><h2 id="数据库初始化" tabindex="-1"><a class="header-anchor" href="#数据库初始化" aria-hidden="true">#</a> 数据库初始化</h2><p>首先创建 <code>zlink </code> 数据库</p><div class="language-sql" data-ext="sql"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token identifier"><span class="token punctuation">`</span>zlink<span class="token punctuation">`</span></span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> <span class="token string">&#39;utf8mb4&#39;</span> <span class="token keyword">COLLATE</span> <span class="token string">&#39;utf8mb4_general_ci&#39;</span>
+</code></pre></div><p>然后在数据库中执行 <code>zlink-release-{version}/config/db/zlink.sql</code> 文件中的内容</p><h2 id="启停-zlink" tabindex="-1"><a class="header-anchor" href="#启停-zlink" aria-hidden="true">#</a> 启停 zlink</h2><div class="language-bash" data-ext="sh"><pre class="language-bash"><code><span class="token comment">#启动</span>
+./zlink.sh start
+<span class="token comment">#停止</span>
+./zlink.sh stop
+</code></pre></div></div><!----><footer class="page-meta"><div class="meta-item edit-link"><a href="https://github.com/zzzzzzzs/zlink/edit/main/docs/src/guide/get-started/install-deploy.md" rel="noopener noreferrer" target="_blank" aria-label="编辑此页" class="nav-link label"><!--[--><svg xmlns="http://www.w3.org/2000/svg" class="icon edit-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="edit icon"><path d="M430.818 653.65a60.46 60.46 0 0 1-50.96-93.281l71.69-114.012 7.773-10.365L816.038 80.138A60.46 60.46 0 0 1 859.225 62a60.46 60.46 0 0 1 43.186 18.138l43.186 43.186a60.46 60.46 0 0 1 0 86.373L588.879 565.55l-8.637 8.637-117.466 68.234a60.46 60.46 0 0 1-31.958 11.229z"></path><path d="M728.802 962H252.891A190.883 190.883 0 0 1 62.008 771.98V296.934a190.883 190.883 0 0 1 190.883-192.61h267.754a60.46 60.46 0 0 1 0 120.92H252.891a69.962 69.962 0 0 0-69.098 69.099V771.98a69.962 69.962 0 0 0 69.098 69.098h475.911A69.962 69.962 0 0 0 797.9 771.98V503.363a60.46 60.46 0 1 1 120.922 0V771.98A190.883 190.883 0 0 1 728.802 962z"></path></svg><!--]-->编辑此页<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></div><div class="meta-item git-info"><div class="update-time"><span class="label">上次编辑于: </span><!----></div><!----></div></footer><nav class="page-nav"><a href="/guide/get-started/" class="nav-link active prev" aria-label="zlink 介绍"><div class="hint"><span class="arrow left"></span>上一页</div><div class="link"><!---->zlink 介绍</div></a><a href="/guide/get-started/table-design.html" class="nav-link next" aria-label="数据表设计"><div class="hint">下一页<span class="arrow right"></span></div><div class="link">数据表设计<!----></div></a></nav><div class="waline-tips-wrapper"></div><!----><!----><!--]--></main><!--]--><footer class="footer-wrapper"><div class="footer">GPL-2.0 协议 | Copyright © 2023-present zzzzzzzs</div><!----></footer></div><!--]--><!--]--><!----><!--]--></div>
+    <script type="module" src="/assets/app-99538d04.js" defer></script>
+  </body>
+</html>
